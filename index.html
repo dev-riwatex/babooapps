@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini-App</title>
+</head>
+<body>
+    <div id="user-info">
+        <h1>Welcome to the Mini-App</h1>
+        <p id="username"></p>
+        <p id="registration-date"></p>
+        <p id="premium-status"></p>
+        <img id="avatar" src="" alt="User Avatar" style="width: 100px; height: 100px; border-radius: 50%;">
+    </div>
+
+    <script>
+        // Получаем данные из URL-параметров
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const registrationDate = urlParams.get('registration_date');
+        const premiumStatus = urlParams.get('is_premium');
+        const avatarUrl = urlParams.get('avatar');
+
+        // Отображение данных
+        document.getElementById('username').innerText = `Username: ${username}`;
+        document.getElementById('registration-date').innerText = `Registration Date: ${registrationDate}`;
+        document.getElementById('premium-status').innerText = `Premium Status: ${premiumStatus === 'true' ? 'Yes' : 'No'}`;
+        if (avatarUrl) {
+            document.getElementById('avatar').src = avatarUrl;
+        }
+    </script>
+</body>
+</html>
 
